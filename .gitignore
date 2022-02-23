@@ -2,6 +2,8 @@
 ms/
 gains/
 fluxes/
+testing/
+kal-env/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
