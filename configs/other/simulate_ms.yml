@@ -1,0 +1,42 @@
+# Usage: Create empty measurement sets for KAT-7 and MeerKAT arrays
+
+# Dimensions:
+#   n_time = 2 * 3600/10 = 720
+#   n_ant = 7 (for KAT-7) or 64 (for MeerKAT)
+#   n_chan = 1
+#   n_dir = 1
+#   n_corr = 4
+
+# Correlations on diagonals-only
+
+1: # Create empty KAT-7 ms
+  command: "kal-create ms"
+  arguments:
+    msname: "ms/vla.ms"
+  options:
+    tel: 'vla-b'
+    pos_type: 'ascii'
+    dec: ' -30d16m41s' 
+    ra: '11h49m36s'      
+    synthesis: 2
+    dtime: 15
+    freq0: "1GHz"
+    nchan: "1"
+    dfreq: "1MHz"
+    stokes: "XX XY YX YY"
+
+2: # Create empty MeerKAT ms
+  command: "kal-create ms"
+  arguments:
+    msname: "ms/meerkat.ms"
+  options:
+    tel: 'meerkat'
+    pos_type: 'ascii'
+    dec: ' -30d16m41s' 
+    ra: '11h49m36s'      
+    synthesis: 2
+    dtime: 15
+    freq0: "1GHz"
+    nchan: "1"
+    dfreq: "1MHz"
+    stokes: "XX XY YX YY"

@@ -1,0 +1,67 @@
+# 1: # Calibrate with kalcal with full sky-model
+#   command: "kal-calibrate vanilla"
+#   arguments:
+#     ms: "ms/kat7-2.ms"
+#   options:
+#     filter: 1
+#     smoother: 1
+#     algorithm: "NUMBA"
+#     sigma_f: 0.01
+#     sigma_n: 1.0
+#     step_control: 0.5
+#     model_column: "FULL_SRC100_MODEL"
+#     vis_column: "FULL_SRC100_DATA"
+#     weight_column: "WEIGHT"
+#     out_filter: "gains/kalcal/other/full-filter.npy"
+#     out_smoother: "gains/kalcal/other/full-smoother.npy"
+#     out_data: "FULL_CORRECTED"
+
+# 2: # Calibrate with kalcal with half sky-model
+#   command: "kal-calibrate vanilla"
+#   arguments:
+#     ms: "ms/kat7-2.ms"
+#   options:
+#     filter: 1
+#     smoother: 1
+#     algorithm: "NUMBA"
+#     sigma_f: 0.05
+#     sigma_n: 1.0
+#     step_control: 0.5
+#     model_column: "HALF_MODEL"
+#     vis_column: "FULL_DATA"
+#     weight_column: "WEIGHT"
+#     out_filter: "gains/kalcal/other/half-filter.npy"
+#     out_smoother: "gains/kalcal/other/half-smoother.npy"
+#     out_data: "HALF_CORRECTED"
+
+3: # Plot gains for full sky-model solutions
+  command: "kal-plot gains"
+  options:
+    plot: [
+      ["gains/true/vla/vla-src-100-gains.npy", "True Jones", "black", "-"],
+      ["gains/kalcal/vla/src-100/sigma_0.004/full-filter.npy", "Filter", "red", "."],
+      ["gains/kalcal/vla/src-100/sigma_0.004/full-smoother.npy", "Smoother", "green", "-"]
+    ]
+    ref_ant: 0
+    show: "0, 1, 2, 3"
+    axis: "TIME"
+    complex_axis: "REAL"
+    title: "Gains magnitude plot over TIME (REAL)\n(FULL SKY-MODEL) - Filter and Smoothe0r"
+    out_file: "plots/kalcal/full-test.png"
+    display: True
+
+# 4: # Plot gains for half sky-model solutions
+#   command: "kal-plot gains"
+#   options:
+#     plot: [
+#       ["gains/kalcal/other/kat7-2-src-100-gains.npy", "True Jones", "black", "-"],
+#       ["gains/kalcal/other/half-filter.npy", "Filter", "red", "."],
+#       ["gains/kalcal/other/half-smoother.npy", "Smoother", "green", "-"]
+#     ]
+#     ref_ant: 0
+#     show: "0, 1, 2, 3"
+#     axis: "TIME"
+#     complex_axis: "REAL"
+#     title: "Gains magnitude plot over TIME (REAL)\n(HALF SKY-MODEL) - Filter and Smoother"
+#     out_file: "plots/kalcal/half-test.png"
+#     display: True

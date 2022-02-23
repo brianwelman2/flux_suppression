@@ -1,0 +1,48 @@
+# Usage: Simulate direction-independent gains drawing from a gaussian process
+# and applying to a square exponential function with a given time-scale, for
+# the antenna array 'MeerKAT'
+
+# Dimensions:
+#   n_time = 2 * 3600/10 = 720
+#   n_ant = 64
+#   n_chan = 1
+#   n_dir = 1
+#   n_corr = 4
+
+# Correlations on diagonals-only
+
+1: # Gains for MeerKAT on 1 src sky-model
+  command: "kal-create gains"
+  arguments:  
+    ms: "ms/meerkat.ms"
+    sky_model: "skymodels/meerkat/model-src-1.txt"
+  options:
+    type: "normal"
+    std: 0.2                     
+    diffs: [0.05, 0.05, 0.5]
+    die: True
+    out_file: "gains/true/meerkat/meerkat-src-1-gains.npy"
+
+2: # Gains for MeerKAT on 2 src sky-model
+  command: "kal-create gains"
+  arguments:  
+    ms: "ms/meerkat.ms"
+    sky_model: "skymodels/meerkat/model-src-2.txt"
+  options:
+    type: "normal"
+    std: 0.2                     
+    diffs: [0.05, 0.05, 0.5]
+    die: True
+    out_file: "gains/true/meerkat/meerkat-src-2-gains.npy"
+
+3: # Gains for MeerKAT on 100 src sky-model
+  command: "kal-create gains"
+  arguments:  
+    ms: "ms/meerkat.ms"
+    sky_model: "skymodels/meerkat/model-fp-100-src-100.txt"
+  options:
+    type: "normal"
+    std: 0.2                     
+    diffs: [0.05, 0.05, 0.5]
+    die: True
+    out_file: "gains/true/meerkat/meerkat-src-100-gains.npy"

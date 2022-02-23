@@ -1,0 +1,47 @@
+1: # Create empty KAT7 ms
+  command: "kal-create ms"
+  arguments:
+    msname: "ms/kat7.ms"
+  options:
+    tel: 'meerkat'
+    pos_type: 'ascii'
+    dec: ' -30d14m50s' 
+    ra: '11h49m15s'    
+    synthesis: 2
+    dtime: 10
+    freq0: "1GHz"
+    nchan: "1"
+    dfreq: "1MHz"
+    stokes: "XX XY YX YY"
+
+2: # Create empty VLA-B ms
+  command: "kal-create ms"
+  arguments:
+    msname: "ms/vlab.ms"
+  options:
+    tel: 'meerkat'
+    pos_type: 'ascii'
+    dec: ' -30d27m43s' 
+    ra: '11h50m15s'    
+    synthesis: 2
+    dtime: 10
+    freq0: "1GHz"
+    nchan: "1"
+    dfreq: "1MHz"
+    stokes: "XX XY YX YY"
+
+3: # Create empty KAT7 ms
+  command: "kal-create ms"
+  arguments:
+    msname: "ms/meerkat.ms"
+  options:
+    tel: 'meerkat'
+    pos_type: 'ascii'
+    dec: '30d08m35s' 
+    ra: '11h49m39s'    
+    synthesis: 2
+    dtime: 10
+    freq0: "1GHz"
+    nchan: "1"
+    dfreq: "1MHz"
+    stokes: "XX XY YX YY"

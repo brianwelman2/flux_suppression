@@ -1,0 +1,31 @@
+1: # Plot gains for full sky-model solutions
+  command: "kal-plot gains"
+  options:
+    plot: [
+      ["gains/true_gains.npy", "True Jones", "black", "-"],
+      ["gains/cubical/tint_12/full-12-cubical.npy", "Cubical-12", "red", "-"],
+      ["gains/kalcal/full_smoother.npy", "Kalcal", "green", "-"]
+    ]
+    ref_ant: 0
+    show: "0, 1, 2, 3"
+    axis: "TIME"
+    complex_axis: "REAL"
+    title: "Gains magnitude plot over TIME (REAL)\n(FULL SKY-MODEL) - Kalcal vs Cubical"
+    out_file: "plots/comparison/kalcal_vs_cubical_full_gp_plot.png"
+    display: True
+
+2: # Plot gains for half sky-model solutions
+  command: "kal-plot gains"
+  options:
+    plot: [
+      ["gains/true_gains.npy", "True Jones", "black", "-"],
+      ["gains/cubical/tint_12/half-12-cubical.npy", "Cubical-12", "red", "-"],
+      ["gains/kalcal/half_smoother.npy", "Kalcal", "green", "-"]
+    ]
+    ref_ant: 0
+    show: "0, 1, 2, 3"
+    axis: "TIME"
+    complex_axis: "REAL"
+    title: "Gains magnitude plot over TIME (REAL)\n(HALF SKY-MODEL) - Kalcal vs Cubical"
+    out_file: "plots/comparison/kalcal_vs_cubical_half_gp_plot.png"
+    display: True

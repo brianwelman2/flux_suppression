@@ -1,0 +1,59 @@
+[g]
+dd-term = 0
+time-int = 12
+freq-int = 1
+max-prior-error = 500
+max-post-error = 500
+max-iter = 50
+update-type = amp-diag
+conv-quorum = 0.99
+ref-ant = None
+type = complex-2x2
+robust-cov = compute
+robust-rms = 0
+save-to = path/to/gains/file
+
+[model]
+list = NAME_OF_MODEL_COLUMN
+ddes = auto
+pa-rotate = 0
+
+[data]
+ms = path/to/ms
+column = NAME_OF_DATA_COLUMN
+time-chunk = 0
+freq-chunk = 0
+
+[montblanc]
+device = CPU
+dtype = float
+feed-type = linear
+verbosity = INFO
+
+[debug]
+pdb = 0
+
+[log]
+verbose = solver=2
+
+[flags]
+apply = 0
+auto-init = 0
+reinit-bitflags = 0
+save = 0
+
+[weight]
+column = WEIGHT
+
+[out]
+dir = output/dir/for/solution
+overwrite = 1
+mode = sc
+plots = 0
+column = CORRECTED_DATA
+weight-column = 0
+
+[sol]
+delta-g = 1e-06
+delta-chi = 1e-06
+stall-quorum = 2

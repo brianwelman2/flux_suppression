@@ -1,0 +1,12 @@
+plot: [
+  ["gains/true/kat7/kat7-src-2-gains.npy", "True Jones", "black", "-"],
+  ["gains/kalcal/other/filter.npy", "Filter", "red", "."],
+  ["gains/kalcal/other/smoother.npy", "Smoother", "green", "-"]
+]
+ref_ant: 0
+show: "0, 1, 2, 3"
+axis: "TIME"
+complex_axis: "REAL"
+title: "GP-plot on real time axis, with KAT-7 on SRC=2\nKalcal with Optuna: sigma_f=0.0025"
+out_file: "plots/kalcal/optuna-kat7-src-2.png"
+display: True

@@ -1,0 +1,15 @@
+1: # Plot gains for full sky-model solutions
+  command: "kal-plot gains"
+  options:
+    plot: [
+      ["gains/true/meerkat/meerkat-src-100-gains.npy", "True Jones", "black", "-"],
+      ["gains/kalcal/meerkat/src-100/fp-30/sigma_0.0025/full-filter.npy", "Filter", "red", "+"],
+      ["gains/kalcal/meerkat/src-100/fp-30/sigma_0.0025/full-smoother.npy", "Smoother", "green", "-"]
+    ]
+    ref_ant: 0
+    show: "0, 1, 2, 3"
+    axis: "TIME"
+    complex_axis: "REAL"
+    title: "Gains magnitude plot over TIME (REAL)\n(FULL SKY-MODEL) - MeerKAT @ sigma_f=0.0025"
+    out_file: "plots/kalcal/kalcal-src-100-fp-30.png"
+    display: True

@@ -1,0 +1,100 @@
+# Usage: With a skymodel and true input gains, create direction-independent
+# model visibilities and measured visibilities (with added noise). Noise set
+# drawn from ~ CN(0, 2) or 1 Jy per axis for the array 'MeerKAT'.
+
+# Dimensions:
+#   n_time = 2 * 3600/10 = 720
+#   n_ant = 64
+#   n_chan = 1
+#   n_dir = 1
+#   n_corr = 4
+
+1: # Data for MeerKAT on 1 src sky-model OR 70% modelled flux of 2 src sky-model
+  command: "kal-create data"
+  arguments:
+    ms: "ms/meerkat.ms"
+    sky_model: "skymodels/meerkat/model-src-1.txt"
+    gains: "gains/true/meerkat/meerkat-src-1-gains.npy"
+  options:
+    std: 1.4142135623730951
+    phase_convention: "CASA"
+    die: True
+    utime: 30
+    ncpu: 20
+    mname: "SRC1_MODEL"
+    dname: "SRC1_DATA"
+
+2: # Data for MeerKAT on 2 src sky-model @ 100% modelled flux
+  command: "kal-create data"
+  arguments:
+    ms: "ms/meerkat.ms"
+    sky_model: "skymodels/meerkat/model-src-2.txt"
+    gains: "gains/true/meerkat/meerkat-src-2-gains.npy"
+  options:
+    std: 1.4142135623730951
+    phase_convention: "CASA"
+    die: True
+    utime: 30
+    ncpu: 20
+    mname: "SRC2_MODEL"
+    dname: "SRC2_DATA"
+
+3: # Data for MeerKAT on 100 src sky-model @ 30% modelled flux
+  command: "kal-create data"
+  arguments:
+    ms: "ms/meerkat.ms"
+    sky_model: "skymodels/meerkat/model-fp-30-src-100.txt"
+    gains: "gains/true/meerkat/meerkat-src-100-gains.npy"
+  options:
+    std: 1.4142135623730951
+    phase_convention: "CASA"
+    die: True
+    utime: 30
+    ncpu: 20
+    mname: "FP30_SRC100_MODEL"
+    dname: "FP30_SRC100_DATA"
+
+4: # Data for MeerKAT on 100 src sky-model @ 50% modelled flux
+  command: "kal-create data"
+  arguments:
+    ms: "ms/meerkat.ms"
+    sky_model: "skymodels/meerkat/model-fp-50-src-100.txt"
+    gains: "gains/true/meerkat/meerkat-src-100-gains.npy"
+  options:
+    std: 1.4142135623730951
+    phase_convention: "CASA"
+    die: True
+    utime: 30
+    ncpu: 20
+    mname: "FP50_SRC100_MODEL"
+    dname: "FP50_SRC100_DATA"
+
+5: # Data for MeerKAT on 100 src sky-model @ 70% modelled flux
+  command: "kal-create data"
+  arguments:
+    ms: "ms/meerkat.ms"
+    sky_model: "skymodels/meerkat/model-fp-70-src-100.txt"
+    gains: "gains/true/meerkat/meerkat-src-100-gains.npy"
+  options:
+    std: 1.4142135623730951
+    phase_convention: "CASA"
+    die: True
+    utime: 30
+    ncpu: 20
+    mname: "FP70_SRC100_MODEL"
+    dname: "FP70_SRC100_DATA"
+
+6: # Data for MeerKAT on 100 src sky-model @ 100% modelled flux
+  command: "kal-create data"
+  arguments:
+    ms: "ms/meerkat.ms"
+    sky_model: "skymodels/meerkat/model-fp-100-src-100.txt"
+    gains: "gains/true/meerkat/meerkat-src-100-gains.npy"
+  options:
+    std: 1.4142135623730951
+    phase_convention: "CASA"
+    die: True
+    utime: 30
+    ncpu: 20
+    mname: "FP100_SRC100_MODEL"
+    dname: "FP100_SRC100_DATA"

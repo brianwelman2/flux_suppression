@@ -1,0 +1,48 @@
+# Usage: Simulate direction-independent gains drawing from a gaussian process
+# and applying to a square exponential function with a given time-scale, for
+# the antenna array 'VLA-B' (VLA on B configuration)
+
+# Dimensions:
+#   n_time = 2 * 3600/10 = 720
+#   n_ant = 27
+#   n_chan = 1
+#   n_dir = 1
+#   n_corr = 4
+
+# Correlations on diagonals-only
+
+1: # Gains for VLA-B on 1 src sky-model
+  command: "kal-create gains"
+  arguments:  
+    ms: "ms/vlab.ms"
+    sky_model: "skymodels/vlab/model-src-1.txt"
+  options:
+    type: "normal"
+    std: 0.2                     
+    diffs: [0.05, 0.05, 0.5]
+    die: True
+    out_file: "gains/true/vlab/vlab-src-1-gains.npy"
+
+2: # Gains for VLA-B on 2 src sky-model
+  command: "kal-create gains"
+  arguments:  
+    ms: "ms/vlab.ms"
+    sky_model: "skymodels/vlab/model-src-2.txt"
+  options:
+    type: "normal"
+    std: 0.2                     
+    diffs: [0.05, 0.05, 0.5]
+    die: True
+    out_file: "gains/true/vlab/vlab-src-2-gains.npy"
+
+3: # Gains for VLA-B on 100 src sky-model
+  command: "kal-create gains"
+  arguments:  
+    ms: "ms/vlab.ms"
+    sky_model: "skymodels/vlab/model-fp-100-src-100.txt"
+  options:
+    type: "normal"
+    std: 0.2                     
+    diffs: [0.05, 0.05, 0.5]
+    die: True
+    out_file: "gains/true/vlab/vlab-src-100-gains.npy"
